@@ -1,0 +1,156 @@
+
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f5f6fa;
+  color: #2c3e50;
+}
+
+.taller-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.taller-electricidad-bg {
+  background-image: url('../img/elec.jpg');
+}
+
+.taller-banco-bg {
+  background-image: url('../img/banco.webp');
+}
+
+.taller-madera-bg {
+  background-image: url('../img/Carpinteria.jpeg');
+}
+
+.taller-soldadura-bg {
+  background-image: url('../img/Soldadura.webp');
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+}
+
+.overlay h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/* CONTENIDO */
+.contenido {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.contenido h2 {
+  font-size: 2rem;
+  color: #2980b9;
+  margin-bottom: 1rem;
+}
+
+/* NIVELES */
+.niveles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #ecf0f1;
+}
+
+.nivel {
+  background-color: #ffffff;
+  border-left: 6px solid #3498db;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nivel h3 {
+  margin-top: 0;
+  color: #3498db;
+}
+
+/* GALERIA */
+.galeria-taller {
+  padding: 2rem;
+  text-align: center;
+}
+
+.galeria-taller h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.imagenes img {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.imagenes img:hover {
+  transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+  background-color: #34495e;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+.boton:hover {
+  background-color: #005fa3;
+}
+
+.boton-container {
+  text-align: center;
+}
+
+.boton-explorar {
+  background-color: #0874d3b0;
+  color: rgba(255, 255, 255, 0.507);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instituto Técnico Honduras | Inicio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables y configuración global */
+        :root {
+            --color-primary: rgba(167, 135, 93, 0.8);      /* Azul Oscuro */
+            --color-secondary: #ffffff;   /* Dorado */
+            --color-light: #030303;       /* Gris claro */
+            --color-text: #ffffff;
+            --color-text-secondary: #ffffff;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #1a1a1a;
+            position: relative;
+        }
+        
+        /* Fondo difuminado */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/fondo2.jpeg') no-repeat center center/cover;
+            filter: blur(8px) brightness(50%);
+            z-index: -2;
+        }
+        
+        .content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(167, 135, 93, 0.8);
+            z-index: -1;
+        }
+
+        /* Contenedor principal para centrar contenido */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Encabezado (Header) */
+        .header {
+            background-color: rgba(235, 210, 141, 0.9);
+            color: var(--color-text);
+            padding: 1.5rem 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header .logo-container img {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .header .logo-container h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        /* Navegación (Menu) */
+        .navbar {
+            background-color: rgba(167, 135, 93, 0.8);
+            border-top: 2px solid var(--color-secondary);
+            padding: 15px 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .navbar a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .navbar a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(167, 135, 93, 0.8);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            z-index: 1;
+            border-top: 2px solid var(--color-secondary);
+            border-radius: 0 0 5px 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--color-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 400;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+        }
+        
+        /* Secciones de contenido */
+        section {
+            padding: 80px 0;
+        }
+        
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            color: var(--color-secondary);
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        .section-text {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            text-align: justify;
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .card {
+            background-color: rgba(167, 135, 93, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        .card-video {
+            background-color: rgba(167, 135, 93, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            margin-left: 25%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 10%;
+            width: 50%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(235, 210, 141, 0.9);
+        }
+        
+        .card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--color-secondary);
+        }
+        
+        .card p {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Quiénes Somos */
+        #quienes-somos {
+            padding-top: 150px;
+        }
+        #quienes-somos .container {
+            text-align: center;
+        }
+        #quienes-somos .container p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* Visión y Misión */
+        .vision-mision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .vision-mision-grid .card {
+            border-left: 4px solid var(--color-secondary);
+            text-align: left;
+            background-color: rgba(235, 210, 141, 0.9);
+        }
+
+        /* Historia */
+        #historia .card {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            background-color: rgba(235, 210, 141, 0.9);
+        }
+        #historia .card p {
+             font-size: 1.1rem;
+             color: var(--color-text-secondary);
+        }
+
+        /* Plataformas del Colegio */
+        #plataformas .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .platform-card {
+            background-color: rgba(235, 210, 141, 0.9);
+            color: var(--color-light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .platform-card i, .platform-card img {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--color-secondary);
+            height: 50px;
+            width: auto;
+        }
+        
+        .platform-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .platform-card .btn-platform {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .platform-card .btn-platform:hover {
+            background-color: rgba(167, 135, 93, 0.8);
+        }
+
+        /* Contáctanos */
+        #contacto .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--color-secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Pie de página (Footer) */
+        .footer {
+            background-color: rgba(167, 135, 93, 0.8);
+            color: var(--color-text);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--color-secondary);
+        }
+
+        /* Media Queries para diseño responsive */
+        @media (max-width: 768px) {
+            .header .logo-container h1 {
+                font-size: 1.5rem;
+            }
+            .navbar ul {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .vision-mision-grid {
+                grid-template-columns: 1fr;
+            }
+            #quienes-somos {
+                padding-top: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="content-overlay"></div>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo del Instituto Técnico Honduras" />
+            <h1>INSTITUTO TÉCNICO HONDURAS</h1>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="#index.html">Inicio</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#academico">Áreas Académicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="Ciencias_Naturales.html">Naturales</a>
+                            <a href="sociales.html">Sociales</a>
+                            <a href="espanol.html">Español</a>
+                            <a href="matematicas.html">Matemáticas</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#carreras">Carreras Técnicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="robotica.html">Robótica</a>
+                            <a href="informatica.html">Informática</a>
+                            <a href="Electricidad.html">Electricidad</a>
+                            <a href="Refrigeracion.html">Refrigeración</a>
+                            <a href="mecanica_automotriz.html">Mecánica Automotriz</a>
+                            <a href="mecanica_industrial.html">Mecánica Industrial</a>
+                            <a href="Electronica.html">Electronica</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#talleres">Talleres <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="taller_electricidad.html">Electricidad</a>
+                            <a href="taller_madera.html">Madera</a>
+                            <a href="taller_mecanica.html">Mecánica de Banco</a>
+                            <a href="taller_soldadura.html">Soldadura</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="mallas.html">Malla Curricular</a></li>
+                    <li><a href="contactanos.html">Contáctanos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="inicio">
+            <div class="container">
+                <h2 style="color: var(--color-light); margin-bottom: 20px;">Bienvenidos al Instituto Técnico Honduras</h2>
+                    <p class="section-text" style="font-size: 1.5rem; max-width: 900px; text-align: center;">
+                        Excelencia educativa y formación técnica para un futuro brillante.
+                    </p>
+        
+            
+        </div>
+        <div class="card-video">       
+            <video controls src="img/VideoIndex.mp4" width="300px" height="300px" alt="Estudiantes ensamblando robot">                    
+        </div>
+        </section>
+
+        <section id="quienes-somos">
+            <div class="container">
+                <h2>Quiénes Somos</h2>
+                <p class="section-text">
+                    El Instituto Técnico Honduras es una institución educativa de prestigio, fundada con el firme compromiso de ofrecer una formación integral que combina la excelencia académica con el desarrollo de habilidades técnicas de vanguardia. Creemos en la educación como la principal herramienta para transformar vidas y construir un futuro próspero para nuestros estudiantes y para el país.
+                    <br><br>
+                    Nuestra comunidad educativa está formada por docentes altamente calificados, personal administrativo comprometido y estudiantes con un gran potencial. Trabajamos juntos para crear un ambiente de aprendizaje dinámico, innovador y seguro, donde cada joven puede alcanzar su máximo potencial.
+                </p>
+            </div>
+        </section>
+
+        <section id="vision-mision">
+            <div class="container">
+                <h2>Visión y Misión</h2>
+                <div class="vision-mision-grid">
+                    <div class="card">
+                        <h3><i class="fas fa-bullseye"></i> Nuestra Misión</h3>
+                        <p>
+                            Ser el centro educativo líder en la formación técnica y académica, ofreciendo una educación de calidad que empodere a nuestros estudiantes con conocimientos, destrezas y ética profesional, promoviendo su éxito personal y su contribución activa al desarrollo de la sociedad hondureña.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-eye"></i> Nuestra Visión</h3>
+                        <p>
+                            Convertirnos en un referente nacional e internacional en educación, siendo reconocidos por nuestra innovación pedagógica, nuestra infraestructura de vanguardia y por la alta empleabilidad de nuestros egresados. Aspiramos a ser el motor de cambio para el sector técnico y profesional de Honduras.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="historia">
+            <div class="container">
+                <h2>Nuestra Historia</h2>
+                <p class="section-text" style="text-align: center;">
+                    Desde nuestra fundación, el Instituto Técnico Honduras ha sido un pilar fundamental en la educación del país.
+                </p>
+                <div class="card">
+                    <p>
+                        Fundado en el año 1970, el Instituto Técnico Honduras nació de la necesidad de formar profesionales técnicos altamente capacitados para impulsar el desarrollo industrial y económico del país. Lo que comenzó como un pequeño centro de formación, hoy se ha convertido en una institución de referencia, adaptándose constantemente a las nuevas tecnologías y a las demandas del mercado laboral. Nuestra historia es una crónica de éxito, innovación y compromiso inquebrantable con la educación de calidad. A través de los años, miles de jóvenes han pasado por nuestras aulas y talleres, convirtiéndose en ingenieros, técnicos, emprendedores y líderes que han dejado una huella en la sociedad.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="plataformas">
+            <div class="container">
+                <h2>Plataformas del Colegio</h2>
+                <div class="card-container">
+                    <div class="platform-card">
+                        <img src="img/moodle.png" alt="Moodle Icon" />
+                        <h3>Moodle</h3>
+                        <p>Accede a tus clases, materiales y asignaciones en línea.</p>
+                        <a href="https://www.office.com/" class="btn-platform">Acceder a Moodle</a>
+                    </div>
+                    <div class="platform-card">
+                        <img src="img/365.png" alt="Microsotf 365" />
+                        <h3>Microsoft 365</h3>
+                        <p>Conexión directa con docentes y seguimiento del progreso.</p>
+                        <a href="https://tecnico-honduras.com/moodle39/" class="btn-platform">Acceder a 365</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacto">
+            <div class="container">
+                <h2>Contáctanos</h2>
+                <p class="section-text" style="text-align: center;">
+                    ¿Tienes alguna pregunta? No dudes en comunicarte con nosotros. Estamos aquí para ayudarte.
+                </p>
+                <div class="card-container">
+                    <div class="card contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Dirección</h3>
+                        <p>123 Calle Principal, Tegucigalpa, Honduras</p>
+                    </div>
+                    <div class="card contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Teléfono</h3>
+                        <p>+504 2222-3333</p>
+                    </div>
+                    <div class="card contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Correo Electrónico</h3>
+                        <p>info@instituto-honduras.edu</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Instituto Técnico Honduras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

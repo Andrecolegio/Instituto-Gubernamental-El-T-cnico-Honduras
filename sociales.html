@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instituto Técnico Honduras | Ciencias Sociales</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables y configuración global */
+        :root {
+            --color-primary: rgba(167, 135, 93, 0.8);      /* Azul Oscuro */
+            --color-secondary: #ffffff;   /* Dorado */
+            --color-light: #030303;       /* Gris claro */
+            --color-text: #ffffff;
+            --color-text-secondary: #cccccc;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #1a1a1a;
+            position: relative;
+        }
+        
+        /* Fondo difuminado */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/fondo2.jpeg') no-repeat center center/cover;
+            filter: blur(8px) brightness(50%);
+            z-index: -2;
+        }
+        
+        .content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        /* Contenedor principal para centrar contenido */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Encabezado (Header) */
+        .header {
+            background-color: rgba(235, 210, 141, 0.9);
+            color: var(--color-text);
+            padding: 1.5rem 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header .logo-container img {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .header .logo-container h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        /* Navegación (Menu) */
+        .navbar {
+            background-color: rgba(235, 210, 141, 0.9);
+            border-top: 2px solid var(--color-secondary);
+            padding: 15px 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .navbar a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .navbar a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(235, 210, 141, 0.9);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            z-index: 1;
+            border-top: 2px solid var(--color-secondary);
+            border-radius: 0 0 5px 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--color-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 400;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(170, 150, 96, 0.9);
+            color: var(--color-secondary);
+        }
+
+        /* Contenido principal de la página */
+        main {
+            padding-top: 220px; /* Espacio para el header no fijo */
+            min-height: 100vh;
+        }
+
+        .main-header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background-color: rgba(167, 135, 93, 0.8); 
+            border-bottom: 2px solid var(--color-secondary);
+        }
+        
+        .main-header h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--color-text-secondary);
+        }
+
+        .section-box {
+            background-color: rgba(235, 210, 141, 0.9);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-box h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--color-secondary);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: var(--color-text);
+        }
+        
+        thead tr {
+            background-color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        
+        tbody tr:nth-child(odd) {
+            background-color: rgba(167, 135, 93, 0.8); 
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery .card {
+            background-color: rgba(167, 135, 93, 0.8); 
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery .card:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery .card p {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: rgba(167, 135, 93, 0.8); 
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--color-secondary);
+        }
+        
+        .info-card h3 {
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+        
+        /* Pie de página (Footer) */
+        .footer {
+            background-color: rgba(167, 135, 93, 0.8); 
+            color: var(--color-text);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--color-secondary);
+        }
+
+        /* Media Queries para diseño responsive */
+        @media (max-width: 768px) {
+            .header .logo-container h1 {
+                font-size: 1.5rem;
+            }
+            .navbar ul {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="content-overlay"></div>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo del Instituto Técnico Honduras" />
+            <h1>INSTITUTO TÉCNICO HONDURAS</h1>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Áreas Académicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="ciencias_naturales.html">Naturales</a>
+                            <a href="sociales.html">Sociales</a>
+                            <a href="espanol.html">Español</a>
+                            <a href="matematicas.html">Matemáticas</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Carreras Técnicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="robotica.html">Robótica</a>
+                            <a href="informatica.html">Informática</a>
+                            <a href="electricidad.html">Electricidad</a>
+                            <a href="refrigeracion.html">Refrigeración</a>
+                            <a href="mecanica_automotriz.html">Mecánica Automotriz</a>
+                            <a href="mecanica_industrial.html">Mecánica Industrial</a>
+                            <a href="Electronica.html">Electronica</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Talleres <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="taller_electricidad.html">Electricidad</a>
+                            <a href="taller_madera.html">Madera</a>
+                            <a href="taller_mecanica.html">Mecánica de Banco</a>
+                            <a href="taller_soldadura.html">Soldadura</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="mallas.html">Malla Curricular</a></li>
+                    <li><a href="contactanos.html">Contáctanos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-header">
+            <div class="container">
+                <h1>Ciencias Sociales</h1>
+                <p>
+                    El área de Ciencias Sociales te invita a comprender la complejidad del comportamiento humano, las sociedades y sus interacciones. A través del estudio de la historia, la geografía, la cívica y la economía, formamos ciudadanos críticos y conscientes de su papel en el mundo.
+                </p>
+            </div>
+        </div>
+
+        <section class="container section-box">
+            <h2>Nuestras Áreas de Estudio</h2>
+            <div class="info-list">
+                <div class="info-item">
+                    <i class="fas fa-landmark"></i>
+                    <div class="text-content">
+                        <h3>Historia</h3>
+                        <p>Analiza el pasado para entender el presente. Desde las civilizaciones antiguas hasta los conflictos modernos, la historia nos enseña a valorar nuestro legado y a evitar los errores del pasado.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-globe-americas"></i>
+                    <div class="text-content">
+                        <h3>Geografía</h3>
+                        <p>Estudia la relación entre los seres humanos y su entorno. Explora paisajes, climas, culturas y la distribución de recursos, entendiendo cómo el espacio moldea la vida social.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <div class="text-content">
+                        <h3>Cívica y Ética</h3>
+                        <p>Desarrolla el sentido de ciudadanía y los valores morales. Fomenta el respeto a las leyes, la participación democrática y la toma de decisiones éticas para construir una sociedad justa.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="text-content">
+                        <h3>Economía</h3>
+                        <p>Comprende cómo las sociedades gestionan sus recursos. Aprende sobre producción, consumo, mercados y políticas económicas que influyen directamente en la vida de las personas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container section-box">
+            <h2>Docentes del Área</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Asignatura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sandra Castillo</td>
+                        <td>Historia</td>
+                    </tr>
+                    <tr>
+                        <td>Roberto Martínez</td>
+                        <td>Geografía</td>
+                    </tr>
+                    <tr>
+                        <td>Patricia Sosa</td>
+                        <td>Cívica y Ética</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="container section-box">
+            <h2>Proyectos y Experiencias</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="img/s1.jpg" alt="Estudiantes en proyecto de geografía">
+                    <p>Geografía</p>
+                </div>
+                <div class="card">
+                    <img src="img/s2.jpeg" alt="Simulación de un debate cívico">
+                    <p>Simulación de debate</p>
+                </div>
+                <div class="card">
+                    <img src="img/s3.webp" alt="Exposición de línea de tiempo histórica">
+                    <p>Línea de tiempo histórica</p>
+                </div>
+                <div class="card">
+                    <img src="img/s4.jpeg" alt="Investigación de campo sobre cultura local">
+                    <p>Investigación de campo</p>
+                </div>
+                <div class="card">
+                    <img src="img/s5.jpeg" alt="Charla de un experto en economía">
+                    <p>Charla sobre economía</p>
+                </div>
+                <div class="card">
+                    <img src="img/s6.png" alt="Mapa interactivo de regiones culturales">
+                    <p>Mapa interactivo cultural</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Instituto Técnico Honduras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+   
+</body>
+</html>

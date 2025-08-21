@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malla Curricular | Instituto Técnico Honduras</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables y configuración global */
+        :root {
+            --color-primary: rgba(167, 135, 93, 0.8);      /* Azul Oscuro */
+            --color-secondary: #ffffff;   /* Dorado */
+            --color-light: #030303;       /* Gris claro */
+            --color-text: #ffffff;
+            --color-text-secondary: #ffffff;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #1a1a1a;
+            position: relative;
+        }
+        
+        /* Fondo con patrón de cuadrícula */
+        .background-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -2;
+        }
+
+        /* Contenedor principal para centrar contenido */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header, Navbar y Footer (sin cambios) */
+        .header {
+            background-color: rgba(167, 135, 93, 0.8);
+            color: var(--color-text);
+            padding: 1.5rem 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header .logo-container img {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .header .logo-container h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .navbar {
+            background-color: rgba(167, 135, 93, 0.8);
+            border-top: 2px solid var(--color-secondary);
+            padding: 15px 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .navbar a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .navbar a:hover {
+            color: var(--color-secondary);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(235, 210, 141, 0.9);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            z-index: 1;
+            border-top: 2px solid var(--color-secondary);
+            border-radius: 0 0 5px 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--color-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 400;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+        }
+
+        main {
+            padding-top: 220px;
+            min-height: 100vh;
+        }
+
+        .main-header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background-color: rgba(235, 210, 141, 0.9);
+            border-bottom: 2px solid var(--color-secondary);
+        }
+        
+        .main-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--color-text-secondary);
+        }
+
+        .section-box {
+            background-color:rgba(235, 210, 141, 0.9);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--color-secondary);
+            animation: neonGlow 2s infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from { box-shadow: 0 0 5px var(--color-secondary), 0 0 10px var(--color-secondary); }
+            to { box-shadow: 0 0 20px var(--color-secondary), 0 0 30px var(--color-secondary); }
+        }
+        
+        .section-box h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+        }
+        
+        /* Acordeón para Mallas */
+        .malla-accordion {
+            background-color: rgba(235, 210, 141, 0.9);
+            color: var(--color-text);
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: background-color 0.4s, color 0.4s;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .malla-accordion i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+            transition: transform 0.4s;
+        }
+
+        .malla-accordion span {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .malla-accordion .arrow {
+            font-size: 1rem;
+            transition: transform 0.4s ease;
+        }
+        
+        .malla-accordion.active .arrow {
+            transform: rotate(90deg);
+        }
+
+        .malla-accordion:hover {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+        }
+
+        .malla-accordion-panel {
+            padding: 0 20px;
+            background-color: rgba(167, 135, 93, 0.8);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            border-left: 3px solid var(--color-secondary);
+            margin-bottom: 10px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .malla-accordion-panel p {
+            margin: 15px 0;
+        }
+
+        .malla-accordion-panel .btn-pdf {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            margin: 10px 0 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .malla-accordion-panel .btn-pdf:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--color-secondary);
+        }
+        
+        /* Pie de página (Footer) */
+        .footer {
+            background-color: rgba(167, 135, 93, 0.8);
+            color: var(--color-text);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--color-secondary);
+        }
+
+        /* Media Queries para diseño responsive */
+        @media (max-width: 768px) {
+            .header .logo-container h1 {
+                font-size: 1.5rem;
+            }
+            .navbar ul {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .section-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-grid"></div>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo del Instituto Técnico Honduras" />
+            <h1>INSTITUTO TÉCNICO HONDURAS</h1>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Áreas Académicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="ciencias_naturales.html">Naturales</a>
+                            <a href="sociales.html">Sociales</a>
+                            <a href="espanol.html">Español</a>
+                            <a href="matematicas.html">Matemáticas</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Carreras Técnicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="robotica.html">Robótica</a>
+                            <a href="informatica.html">Informática</a>
+                            <a href="electricidad.html">Electricidad</a>
+                            <a href="refrigeracion.html">Refrigeración</a>
+                            <a href="mecanica_automotriz.html">Mecánica Automotriz</a>
+                            <a href="mecanica_industrial.html">Mecánica Industrial</a>
+                            <a href="Electronica.html">Electronica</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Talleres <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="taller_electricidad.html">Electricidad</a>
+                            <a href="taller_madera.html">Madera</a>
+                            <a href="taller_mecanica.html">Mecánica de Banco</a>
+                            <a href="taller_soldadura.html">Soldadura</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="mallas.html">Malla Curricular</a></li>
+                    <li><a href="contactanos.html">Contáctanos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-header" id="malla">
+            <div class="container">
+                <h1>Malla Curricular y Planes de Estudio</h1>
+                <p>
+                    A continuación, se presentan los planes de estudio detallados para cada una de nuestras carreras técnicas. Haz clic en la carrera de tu interés para explorar sus contenidos y descargar la malla curricular completa en formato PDF.
+                </p>
+            </div>
+        </div>
+
+        <section class="container section-box">
+            <h2>Carreras Técnicas</h2>
+
+            <button class="malla-accordion">
+                <i class="fa-solid fa-robot"></i>
+                <span>Bachillerato Técnico en Robótica</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+            <div class="malla-accordion-panel">
+                <p>
+                    Formación especializada en programación, electrónica, diseño mecánico y control de robots. Preparación para la automatización industrial y la inteligencia artificial.
+                </p>
+                <a href="MALLAS/Malla ROBOTICA.pdf" class="btn-pdf" target="_blank">Ver Malla Curricular (PDF)</a>
+            </div>
+
+            <button class="malla-accordion">
+                <i class="fa-solid fa-laptop-code"></i>
+                <span>Bachillerato Técnico en Informática</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+            <div class="malla-accordion-panel">
+                <p>
+                    Curso enfocado en el desarrollo de software, redes de computadoras, bases de datos y seguridad informática. Los estudiantes adquieren habilidades para la programación y el soporte técnico.
+                </p>
+                <a href="MALLAS/Malla INFORMATICA.pdf" class="btn-pdf" target="_blank">Ver Malla Curricular (PDF)</a>
+            </div>
+
+            <button class="malla-accordion">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Bachillerato Técnico en Electricidad</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+            <div class="malla-accordion-panel">
+                <p>
+                    Aprendizaje de la teoría y la práctica de la electricidad. Se cubren temas como instalaciones eléctricas residenciales e industriales, control de circuitos y electrónica de potencia.
+                </p>
+                <a href="MALLAS/Malla ELECTRICIDAD.pdf" class="btn-pdf" target="_blank">Ver Malla Curricular (PDF)</a>
+            </div>
+
+            <button class="malla-accordion">
+                <i class="fa-solid fa-thermometer"></i>
+                <span>Bachillerato Técnico en Refrigeración</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+            <div class="malla-accordion-panel">
+                <p>
+                    Capacitación en el diseño, instalación y mantenimiento de sistemas de refrigeración y aire acondicionado. Preparación para trabajar con tecnología de climatización industrial y doméstica.
+                </p>
+                <a href="MALLAS/Malla AUTOMOTRIZ.pdf" class="btn-pdf" target="_blank">Ver Malla Curricular (PDF)</a>
+            </div>
+
+            <button class="malla-accordion">
+                <i class="fa-solid fa-car-side"></i>
+                <span>Bachillerato Técnico en Mecánica Automotriz</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+            <div class="malla-accordion-panel">
+                <p>
+                    Formación completa en el mantenimiento, diagnóstico y reparación de vehículos. Se estudian motores, sistemas de transmisión, electrónica y diagnóstico computarizado.
+                </p>
+                <a href="MALLAS/Malla AUTOMOTRIZ.pdf" class="btn-pdf" target="_blank">Ver Malla Curricular (PDF)</a>
+            </div>
+
+            <button class="malla-accordion">
+                <i class="fa-solid fa-cogs"></i>
+                <span>Bachillerato Técnico en Mecánica Industrial</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+            <div class="malla-accordion-panel">
+                <p>
+                    Especialización en el diseño, operación y mantenimiento de maquinaria industrial. Incluye temas de soldadura, sistemas hidráulicos, neumática y procesos de manufactura.
+                </p>
+                <a href="MALLAS/Malla INFORMATICA.pdf" class="btn-pdf" target="_blank">Ver Malla Curricular (PDF)</a>
+            </div>
+
+            <button class="malla-accordion">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Bachillerato Técnico en Electricidad</span>
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+            <div class="malla-accordion-panel">
+                <p>
+                    Aprendizaje de la teoría y la práctica de la electricidad. Se cubren temas como instalaciones eléctricas residenciales e industriales, control de circuitos y electrónica de potencia.
+                </p>
+                <a href="MALLAS/Malla Educativa BTP-Electronica.pdf" class="btn-pdf" target="_blank">Ver Malla Curricular (PDF)</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Instituto Técnico Honduras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Script para acordeón de mallas curriculares
+        var acc = document.getElementsByClassName("malla-accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+        
+        // Script para manejar el hover en el menú desplegable en dispositivos táctiles
+        document.querySelectorAll('.dropdown > a').forEach(item => {
+            item.addEventListener('click', event => {
+                if (window.innerWidth <= 768) {
+                    event.preventDefault();
+                    const parent = item.parentElement;
+                    const dropdownContent = parent.querySelector('.dropdown-content');
+                    
+                    if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                    } else {
+                        document.querySelectorAll('.dropdown-content').forEach(dc => {
+                            if (dc !== dropdownContent) dc.style.display = "none";
+                        });
+                        dropdownContent.style.display = "block";
+                    }
+                }
+            });
+        });
+
+       
+    </script>
+</body>
+</html>

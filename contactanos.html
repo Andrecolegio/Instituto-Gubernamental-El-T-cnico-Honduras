@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contáctanos | Instituto Técnico Honduras</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables y configuración global */
+        :root {
+            --color-primary: rgba(167, 135, 93, 0.8);      /* Azul Oscuro */
+            --color-secondary: rgb(0, 0, 0);   /* Dorado */
+            --color-light: #f4f7f6;       /* Gris claro */
+            --color-text: #ffffff;
+            --color-text-secondary: #fdfdfd;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #1a1a1a;
+            position: relative;
+        }
+        
+        /* Fondo con degradado radial y puntos */
+        .background-contact {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at center, rgba(235, 210, 141, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 255, 255, 0.05) 0px,
+                    rgba(255, 255, 255, 0.05) 2px,
+                    transparent 2px,
+                    transparent 10px
+                );
+            z-index: -2;
+        }
+        
+        /* Contenedor principal para centrar contenido */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header, Navbar y Footer (sin cambios) */
+        .header {
+            background-color: rgba(167, 135, 93, 0.8);
+            color: var(--color-text);
+            padding: 1.5rem 0;
+            text-align: center;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header .logo-container img {
+            height: 70px;
+            margin-right: 15px;
+        }
+        
+        .header .logo-container h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .navbar {
+            background-color: rgba(216, 174, 83, 0.9);
+            border-top: 2px solid var(--color-secondary);
+            padding: 15px 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .navbar a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .navbar a:hover {
+            color: var(--color-secondary);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(167, 135, 93, 0.8);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            z-index: 1;
+            border-top: 2px solid var(--color-secondary);
+            border-radius: 0 0 5px 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--color-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 400;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+        }
+
+        main {
+            padding-top: 220px;
+            min-height: 100vh;
+        }
+
+        .main-header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background-color: rgba(167, 135, 93, 0.8);
+            border-bottom: 2px solid var(--color-secondary);
+        }
+        
+        .main-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--color-text-secondary);
+        }
+
+        .section-box {
+            background-color: rgba(235, 210, 141, 0.9);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-box h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--color-secondary);
+        }
+
+        /* Contenido de Contacto */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid var(--color-primary);
+            border-radius: 5px;
+            background-color: rgba(167, 135, 93, 0.8);
+            color: var(--color-light);
+            font-family: var(--font-body);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            background-color: var(--color-primary);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .contact-form button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: rgba(167, 135, 93, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: rgba(235, 210, 141, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin-right: 15px;
+        }
+
+        .info-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-light);
+        }
+
+        /* Redes Sociales */
+        .social-media {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .social-media h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .social-icons a {
+            color: var(--color-text);
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Google Maps */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Pie de página (Footer) */
+        .footer {
+            background-color: rgba(167, 135, 93, 0.8);
+            color: var(--color-text);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--color-secondary);
+        }
+
+        /* Media Queries para diseño responsive */
+        @media (max-width: 768px) {
+            .header .logo-container h1 {
+                font-size: 1.5rem;
+            }
+            .navbar ul {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-contact"></div>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo del Instituto Técnico Honduras" />
+            <h1>INSTITUTO TÉCNICO HONDURAS</h1>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Áreas Académicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="ciencias_naturales.html">Naturales</a>
+                            <a href="sociales.html">Sociales</a>
+                            <a href="espanol.html">Español</a>
+                            <a href="matematicas.html">Matemáticas</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Carreras Técnicas <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="robotica.html">Robótica</a>
+                            <a href="informatica.html">Informática</a>
+                            <a href="electricidad.html">Electricidad</a>
+                            <a href="refrigeracion.html">Refrigeración</a>
+                            <a href="mecanica_automotriz.html">Mecánica Automotriz</a>
+                            <a href="mecanica_industrial.html">Mecánica Industrial</a>
+                            <a href="Electronica.html">Electronica</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Talleres <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="taller_electricidad.html">Electricidad</a>
+                            <a href="taller_madera.html">Madera</a>
+                            <a href="taller_mecanica.html">Mecánica de Banco</a>
+                            <a href="taller_soldadura.html">Soldadura</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="mallas.html">Malla Curricular</a></li>
+                    <li><a href="contactanos.html">Contáctanos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-header" id="contacto">
+            <div class="container">
+                <h1>Contáctanos</h1>
+                <p>
+                    Estamos aquí para ayudarte. Si tienes preguntas sobre nuestras carreras, inscripciones o cualquier otro tema, no dudes en contactarnos a través del formulario o de nuestros canales de comunicación.
+                </p>
+            </div>
+        </div>
+
+        <section class="container section-box">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Dirección</h3>
+                            <p>Tegucigalpa, Francisco Morazán, Honduras</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Teléfono</h3>
+                            <p>+504 8940-0512</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Correo Electrónico</h3>
+                            <p>info@institutotecnicohonduras.edu</p>
+                        </div>
+                    </div>
+
+                    <div class="social-media">
+                        <h3>Síguenos en Redes Sociales</h3>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/ithoficialtegucigalpa/?locale=es_LA" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/ithinstaoficial/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@tcnicohonduras" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Envíanos un Mensaje</h2>
+                    <form action="#" method="post">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" required>
+                        
+                        <label for="mensaje">Tu Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                        
+                        <button type="submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="container section-box" style="padding: 0; overflow: hidden;">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.932840505298!2d-87.20235958564619!3d14.093409490159677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6a96e541434c4b%3A0xedc96a7888f4c2c5!2sInstituto%20Nacional%20de%20Formaci%C3%B3n%20Profesional%20(INFOP)!5e0!3m2!1ses-419!2shn!4v1628710255474!5m2!1ses-419!2shn" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Instituto Técnico Honduras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Script para manejar el hover en el menú desplegable en dispositivos táctiles
+        document.querySelectorAll('.dropdown > a').forEach(item => {
+            item.addEventListener('click', event => {
+                if (window.innerWidth <= 768) {
+                    event.preventDefault();
+                    const parent = item.parentElement;
+                    const dropdownContent = parent.querySelector('.dropdown-content');
+                    
+                    if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                    } else {
+                        document.querySelectorAll('.dropdown-content').forEach(dc => {
+                            if (dc !== dropdownContent) dc.style.display = "none";
+                        });
+                        dropdownContent.style.display = "block";
+                    }
+                }
+            });
+        });
+
+       
+    </script>
+</body>
+</html>

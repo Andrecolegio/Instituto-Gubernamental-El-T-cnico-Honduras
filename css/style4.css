@@ -1,0 +1,136 @@
+/* Estilos para la subpágina de Mecánica Industrial */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #212529;
+  color: #ffffff;
+}
+
+header {
+  background: #495057;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #f8f9fa;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #ced4da;
+}
+
+.descripcion {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.descripcion h2 {
+  color: #adb5bd;
+  margin-bottom: 1rem;
+}
+
+.grados {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.grado {
+  background-color: #adb5bd;
+  color: #212529;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.grado h3 {
+  margin-top: 0;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.galeria img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+.profesores {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.profesores h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #adb5bd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e633;
+}
+
+th {
+  background-color: #495057;
+  color: #f8f9fa;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #495057;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  color: #f8f9fa;
+}
+.boton:hover {
+  background-color: #005fa3;
+}
+
+.boton-container {
+  text-align: center;
+}
+
+.boton-explorar {
+  background-color: #0874d3b0;
+  color: rgba(255, 255, 255, 0.507);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}

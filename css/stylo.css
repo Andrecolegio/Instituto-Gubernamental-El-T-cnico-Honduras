@@ -1,0 +1,116 @@
+/* Estilos para la subpágina de Robótica */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0d1b2a;
+  color: #ffffff;
+}
+
+header {
+  background: #1b263b;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #fca311;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #e0e1dd;
+}
+
+.descripcion {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.descripcion h2 {
+  color: #fca311;
+  margin-bottom: 1rem;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.galeria img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+.profesores {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.profesores h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fca311;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1b263b;
+  color: #ffffff;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e1dd55;
+}
+
+th {
+  background-color: #14213d;
+  color: #fca311;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #1b263b;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+.boton:hover {
+  background-color: #005fa3;
+}
+
+.boton-container {
+  text-align: center;
+}
+
+.boton-explorar {
+  background-color: #0874d3b0;
+  color: rgba(255, 255, 255, 0.507);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
