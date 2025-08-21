@@ -668,15 +668,7 @@
                 }
             });
         });
-
-        // Cierra los dropdowns si se hace clic fuera
-        window.addEventListener('click', event => {
-            if (!event.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown-content').forEach(dc => {
-                    dc.style.display = "none";
-                });
-            }
-        });
     </script>
 </body>
+
 </html>
